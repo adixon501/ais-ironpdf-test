@@ -1,0 +1,66 @@
+﻿@using System.Security.Principal
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    @* favicon *@
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/favicon/favicon-16x16.png">
+    <link rel="mask-icon" href="~/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+
+    @* InSpec bundled site level css file *@
+    <link rel="stylesheet" href="~/bundles/css/site-bundle.min.css" />
+
+</head>
+<body>
+    <div class="main-container">
+        <environment include="Development">
+            <div class="text-center align-middle dev-alert">
+                Configured for @(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")) mode
+            </div>
+        </environment>
+        <environment include="Dev1">
+            <div class="text-center align-middle dev1-alert">
+                Configured for @(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")) mode
+            </div>
+        </environment>
+        <environment include="Staging">
+            <div class="text-center align-middle stage-alert">
+                Configured for @(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")) mode
+            </div>
+        </environment>
+        <nav class="navbar navbar-expand-lg navbar-dark flex-md-nowrap shadow">
+            <div class="container-fluid">
+                <a class="navbar-brand w-auto col-md-2 mr-auto" asp-area="" asp-controller="Home" asp-action="Index">
+                    Iron PDF Watermark
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+
+
+        <div class="lower-container">
+            @RenderBody()
+        </div>
+    </div>
+
+    @* all bundle JS files fro the lib folder that are site level *@
+    <script src="~/bundles/js/lib-bundle.min.js" asp-append-version="true"></script>
+    <script src="~/bundles/js/site-bundle.min.js" asp-append-version="true"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+
+
+
+</html>
